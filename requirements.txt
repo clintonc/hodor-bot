@@ -1,0 +1,6 @@
+argparse==1.2.1
+irc==8.9.1
+jaraco.util==10.0.2
+more-itertools==2.2
+six==1.9.0
+wsgiref==0.1.2

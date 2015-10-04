@@ -12,18 +12,23 @@ bot in python:
 * It (intermittently) speaks in channels when others are speaking
 * It also conveniently presents protocol information on stdout.
 
-Requires the irc package, obtainable by typing
+Requires the irc package, but uses the API of an old version.  To run this
+program, I recommend the following:
 
-    pip install irc
+    git clone http://github.com/clintonc/hodor-bot
+    virtualenv hodor-bot
+    cd hodor-bot
+    source bin/activate
+    pip install -r requirements.txt
 
 Usage
 -----
 
     usage: hodor-bot.py [-h] [--server SERVER] [--port PORT] [--nick NICK]
                         [--probability PROBABILITY] [--verbose] [--debug]
-    
+
     Hodor meets IRC.
-    
+
     optional arguments:
       -h, --help            show this help message and exit
       --server SERVER       Server to connect to (defaults to localhost)
@@ -33,4 +38,4 @@ Usage
                             Probability to reply in channel per message
       --verbose             Print to stdout all events
       --debug               Debug messages
-    
+
