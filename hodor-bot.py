@@ -20,6 +20,13 @@ import irc.client
 import irc.events
 import random
 
+def percentx(param):
+    val = int(param)
+    if val < 0 or val > 100:
+        raise argparse.ArgumentTypeError(
+            ("%s is invalid; choose an value between 0 and 100.") % val)
+    return val
+
 parser = argparse.ArgumentParser(description='Hodor meets IRC.')
 parser.add_argument('--server', default='localhost', 
                     help='Server to connect to (defaults to localhost)')
@@ -27,7 +34,7 @@ parser.add_argument('--port', type=int, default=6667,
                     help='Port to connect to')
 parser.add_argument('--nick', default='hodor',
                     help='Nickname to connect with')
-parser.add_argument('--probability', type=int, default=5,
+parser.add_argument('--probability', type=percentx, default=5,
                     help='Probability to reply in channel per message')
 parser.add_argument('--verbose', action='store_true',
                     help='Print to stdout all events')
