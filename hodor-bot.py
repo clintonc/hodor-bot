@@ -16,12 +16,12 @@ Requires the irc package, obtainable by typing
 """
 
 import argparse
+import random
 import irc.client
 import irc.events
-import random
 
 parser = argparse.ArgumentParser(description='Hodor meets IRC.')
-parser.add_argument('--server', default='localhost', 
+parser.add_argument('--server', default='localhost',
                     help='Server to connect to (defaults to localhost)')
 parser.add_argument('--port', type=int, default=6667,
                     help='Port to connect to')
@@ -38,23 +38,21 @@ def debug(*args):
     "Prints all arguments, if the debug option is enable."
 
     if options.debug:
-        for x in args:
-            print x,
-        print
+        print ' '.join(map(str, args))
 
 
 Random = random.Random()
 client = irc.client.IRC()
 server = client.server()
 channellist = []
-hodors = ['Hodor'+x for x in ['.','...','?','!']]
+hodors = ['Hodor'+x for x in ['.', '...', '?', '!']]
 
 # Default event processor
 def process_event(connection, event):
     """
     Prints the parameters of the supplied event: type, arguments, source, and target.
     """
-    print "{0}: {1} ({2}->{3})".format(event.type, event.arguments, event.source, 
+    print "{0}: {1} ({2}->{3})".format(event.type, event.arguments, event.source,
                                        event.target)
 
 def pubmsg_handler(connection, event):
